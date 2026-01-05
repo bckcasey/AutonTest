@@ -14,23 +14,6 @@
 
 using namespace vex;
 
-// A global instance of vex::brain used for printing to the V5 brain screen
-vex::brain       Brain1;
-
-// define your global instances of motors and other devices here
-
-
-
-// define a motor.  Type motor.  Motor's name is LeftFront
-
-
-
-
-
-/*
-This function tells the robot to drive straight for a 
-specific power at at a specific percent.
-*/
 
 
 

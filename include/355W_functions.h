@@ -171,3 +171,93 @@ void turn(int dir, int power, float time)
 }
 
 
+void Drivetrain(){
+    
+
+  float a3 = 0.0;
+  float a1 = 0.0;
+
+  float t3 = 100.0;
+  float t1 = 100.0;
+
+  float a23 = 0.0;
+  float a22 = 0.0;
+
+  float t23 = 100.0;
+  float t22 = 100.0;
+
+  int i = 0;
+
+  while(1==1)
+  {
+
+    i++;
+
+    wait(0.01, seconds);
+
+    a3 = driveController1.Axis3.position();
+    a1 = driveController1.Axis1.position();
+
+    if(a3*a3 > t3 || a1*a1 > t1){
+
+      LeftFront.spin(forward,a3+a1,percent);
+      RightFront.spin(forward,a3-a1,percent);
+      LeftMiddle.spin(forward,a3+a1,percent);
+      RightMiddle.spin(forward,a3-a1,percent);
+      LeftBack.spin(forward,a3+a1,percent);
+      RightBack.spin(forward,a3-a1,percent);
+    
+    }else{
+  
+      LeftFront.stop(coast);
+      RightFront.stop(coast);
+      LeftMiddle.stop(coast);
+      RightMiddle.stop(coast);
+      LeftBack.stop(coast);
+      RightBack.stop(coast);
+
+    }
+
+      //Intake 
+    a23=driveController2.Axis3.position();
+    a22=driveController2.Axis2.position();
+
+    if(a23*a23 > t23){
+      Chain.spin(forward,0.75*a23,percent); 
+    }else{
+      Chain.stop();
+    }
+    
+
+    if(a22*a22 > t22){
+      Wheels.spin(forward,a22,percent);
+    
+    }else{
+      Wheels.stop();
+
+    }  
+
+    if(driveController2.ButtonL1.PRESSED){ 
+      Pneumatic1.set(true);  //extend
+      
+      
+    }
+    if(driveController2.ButtonR1.PRESSED){
+      Pneumatic1.set(false);  //extend
+      
+  
+    }
+    if(driveController1.ButtonL1.PRESSED){ 
+      Pneumatic2.set(true);  //extend
+      
+      
+    }
+    if(driveController1.ButtonR1.PRESSED){
+      Pneumatic2.set(false);  //extend
+      
+  
+    }
+  }
+}
+
+
