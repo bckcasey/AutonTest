@@ -1,6 +1,8 @@
 
 
 #include "vex.h"
+#include <iostream>
+#include <cmath>
 
 
 using namespace vex;
@@ -169,6 +171,92 @@ void turn(int dir, int power, float time)
     wait(10,msec);
     
 }
+
+
+void GyroTurnLeft(float speed, float angle, float TargetError){
+
+    float xgyroInit = MyGyro.angle();
+
+    float target_angle = xgyroInit - angle;
+
+    if(target_angle<0) target_angle = target_angle + 360;
+
+    //right turn
+    LeftFront.spin(reverse,speed,percent);
+    RightFront.spin(forward,speed,percent);
+    LeftMiddle.spin(reverse,speed,percent);
+    RightMiddle.spin(forward,speed,percent);
+    LeftBack.spin(reverse,speed,percent);
+    RightBack.spin(forward,speed,percent);
+
+    while(1) {
+        
+//        std::cout<< MyGyro.angle()<< std::endl;
+        
+        float xgyro = MyGyro.angle();
+
+        float error = xgyro-target_angle;
+
+        if(std::abs(error) < TargetError) break;
+
+//        std::cout<<"xgyro = " << xgyro <<", " << "error = " << error << std::endl;
+
+        wait(0.010, seconds);
+
+    }
+    LeftFront.stop();
+    RightFront.stop();
+    LeftMiddle.stop();
+    RightMiddle.stop();
+    LeftBack.stop();
+    RightBack.stop();
+
+    return;
+}
+
+
+void GyroTurnRight(float speed, float angle, float TargetError){
+
+    float xgyroInit = MyGyro.angle();
+
+    float target_angle = xgyroInit + angle;
+
+    if(target_angle>360) target_angle = target_angle - 360;
+
+    //right turn
+    LeftFront.spin(forward,speed,percent);
+    RightFront.spin(reverse,speed,percent);
+    LeftMiddle.spin(forward,speed,percent);
+    RightMiddle.spin(reverse,speed,percent); 
+    LeftBack.spin(forward,speed,percent);
+    RightBack.spin(reverse,speed,percent);
+
+    while(1) {
+        
+        //std::cout<< MyGyro.angle()<< std::endl;
+        
+        float xgyro = MyGyro.angle();
+
+        float error = xgyro-target_angle;
+
+        if(std::abs(error) < TargetError) break;
+
+        //std::cout<<"xgyro = " << xgyro <<", " << "ygyro = " << ygyro << std::endl;
+
+        wait(0.010, seconds);
+
+    }
+    LeftFront.stop();
+    RightFront.stop();
+        LeftMiddle.stop();
+    RightMiddle.stop();
+    LeftBack.stop();
+    RightBack.stop();
+
+    return;
+}
+
+
 
 
 void Drivetrain(){

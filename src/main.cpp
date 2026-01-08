@@ -9,6 +9,7 @@
 #include "vex.h"
 #include "355W_config.h"
 #include "355W_functions.h"
+#include "355W_autons.h"
 #include <iostream>
 #include <cmath>
 
