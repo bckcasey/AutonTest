@@ -22,11 +22,16 @@ using namespace vex;
 int main() 
 {
 
+   // first code for testing each motor one at a time 
+   //to make sure everying is configured correctly
     LeftFront.spin(forward,50,percent);  
 
     wait(5,seconds);
 
     LeftFront.stop();
+
+    // here is for driver control
+    // Drivetrain();
 
 
 }
