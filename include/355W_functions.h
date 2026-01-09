@@ -7,93 +7,15 @@
 
 using namespace vex;
 
-void upper(int power, int dir, float time){
 
-if(dir == 1){
     
-    Upper.spin(forward,power,percent);  
-}
-    
-if(dir == -1){
- 
-    Upper.spin(reverse,power,percent); 
-
-}
-
-wait(time,seconds);
-
-    // turn motors off
-Upper.stop();
-
-}
 
 
 
 
 
-void middle(int power, int dir, float time){
-
-if(dir == 1){
-    
-    Middle.spin(forward,power,percent);  
-}
-    
-if(dir == -1){
- 
-    Middle.spin(reverse,power,percent); 
-
-}
-
-wait(time,seconds);
-
-    // turn motors off
-Middle.stop();
-
-}
 
 
-
-
-void ladder(int power, int dir, float time){
-
-if(dir == 1){
-    
-    Ladder.spin(forward,power,percent);  
-}
-    
-if(dir == -1){
- 
-    Ladder.spin(reverse,power,percent); 
-
-}
-
-wait(time,seconds);
-
-    // turn motors off
-Ladder.stop();
-
-}
-
-
-void intake(int power, int dir, float time){
-
-if(dir == 1){
-    
-    Intake.spin(forward,power,percent);  
-}
-    
-if(dir == -1){
- 
-    Intake.spin(reverse,power,percent); 
-
-}
-
-wait(time,seconds);
-
-    // turn motors off
-Intake.stop();
-
-}
 
 void driveFor(int power, float deg)
 {
@@ -305,7 +227,7 @@ void Drivetrain(){
       RightBack.stop(coast);
 
     }
-
+/*
       //Intake 
     a23=driveController2.Axis3.position();
     a22=driveController2.Axis2.position();
@@ -345,6 +267,7 @@ void Drivetrain(){
       
   
     }
+      */
   }
 }
 
